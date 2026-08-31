@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasim - পোর্টফোলিও</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- নেভিগেশন বার -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Nasim</div>
+            <ul class="nav-links">
+                <li><a href="#home">হোম</a></li>
+                <li><a href="#about">আমার বিষয়ে</a></li>
+                <li><a href="#projects">প্রজেক্ট</a></li>
+                <li><a href="#contact">যোগাযোগ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- হোম সেকশন -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>আমি Nasim</h1>
+                <p class="subtitle">ওয়েব ডেভেলপার এবং ডিজাইনার</p>
+                <p class="description">আধুনিক এবং সুন্দর ওয়েবসাইট তৈরি করি</p>
+                <a href="#contact" class="btn">যোগাযোগ করুন</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- আমার বিষয়ে সেকশন -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>আমার বিষয়ে</h2>
+            <div class="about-content">
+                <p>আমি একজন আবেগপ্রবণ ওয়েব ডেভেলপার যিনি সুন্দর এবং কার্যকর ওয়েবসাইট তৈরি করতে পছন্দ করি। HTML, CSS, এবং JavaScript এ দক্ষ।</p>
+                <div class="skills">
+                    <div class="skill">
+                        <h3>HTML & CSS</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <h3>JavaScript</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <h3>ওয়েব ডিজাইন</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- প্রজেক্ট সেকশন -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>আমার প্রজেক্ট</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>পোর্টফোলিও ওয়েবসাইট</h3>
+                    <p>একটি আধুনিক এবং প্রতিক্রিয়াশীল পোর্টফোলিও সাইট</p>
+                    <a href="#" class="project-link">আরও জানুন</a>
+                </div>
+                <div class="project-card">
+                    <h3>ব্লগ প্ল্যাটফর্ম</h3>
+                    <p>নিবন্ধ প্রকাশের জন্য একটি আধুনিক ব্লগ সাইট</p>
+                    <a href="#" class="project-link">আরও জানুন</a>
+                </div>
+                <div class="project-card">
+                    <h3>ই-কমার্স স্টোর</h3>
+                    <p>পণ্য বিক্রয়ের জন্য একটি সম্পূর্ণ অনলাইন স্টোর</p>
+                    <a href="#" class="project-link">আরও জানুন</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- যোগাযোগ সেকশন -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>আমার সাথে যোগাযোগ করুন</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <input type="text" placeholder="আপনার নাম" required>
+                <input type="email" placeholder="আপনার ইমেল" required>
+                <textarea placeholder="আপনার বার্তা" rows="5" required></textarea>
+                <button type="submit" class="btn">বার্তা পাঠান</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ফুটার -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Nasim. সর্বাধিকার সংরক্ষিত।</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
