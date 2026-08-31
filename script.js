@@ -3,20 +3,18 @@ function handleSubmit(event) {
     event.preventDefault();
     
     const form = event.target;
-    const name = form.querySelector('input[type="text"]').value;
-    const email = form.querySelector('input[type="email"]').value;
-    const message = form.querySelector('textarea').value;
+    const inputs = form.querySelectorAll('input, textarea');
+    const name = inputs[0].value;
     
-    // সাধারণ ভ্যালিডেশন
-    if (name && email && message) {
-        alert(`ধন্যবাদ ${name}! আপনার বার্তা পাঠানো হয়েছে।`);
+    if (name && inputs[1].value && inputs[3].value) {
+        alert(`ধন্যবাদ ${name}! আপনার বার্তা পাঠানো হয়েছে। শীঘ্রই আমরা যোগাযোগ করব।`);
         form.reset();
     } else {
-        alert('সমস্ত ক্ষেত্র পূরণ করুন!');
+        alert('সমস্ত প্রয়োজনীয় ক্ষেত্র পূরণ করুন!');
     }
 }
 
-// স্মুথ স্ক্রলিং
+// স্মুথ স্ক্রলি���
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -30,53 +28,64 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// পেজ লোড হওয়ার সময় অ্যানিমেশন
-window.addEventListener('load', () => {
-    const cards = document.querySelectorAll('.project-card');
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.animation = `slideInUp 0.6s ease ${index * 0.2}s forwards`;
+// পরিসংখ্যান কাউন্টার
+function animateCounters() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.animated) {
+                const target = parseInt(entry.target.dataset.target);
+                let current = 0;
+                const increment = target / 50;
+                
+                const counter = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        entry.target.textContent = target;
+                        clearInterval(counter);
+                    } else {
+                        entry.target.textContent = Math.floor(current);
+                    }
+                }, 30);
+                
+                entry.target.dataset.animated = 'true';
+            }
+        });
     });
-});
+    
+    statNumbers.forEach(number => observer.observe(number));
+}
 
-// স্কোল ইভেন্ট - নেভবার স্টাইল পরিবর্তন
+// নেভবার স্টাইল পরিবর্তন
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 100) {
-        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+        navbar.style.boxShadow = '0 5px 25px rgba(102, 126, 234, 0.4)';
     } else {
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        navbar.style.boxShadow = '0 2px 20px rgba(102, 126, 234, 0.3)';
     }
 });
 
-// কাউন্টার অ্যানিমেশন (ঐচ্ছিক)
-function animateCounter(element, target, duration = 2000) {
-    let current = 0;
-    const increment = target / (duration / 16);
+// পেজ লোড হওয়ার সময় অ্যানিমেশন
+window.addEventListener('load', () => {
+    animateCounters();
     
-    const counter = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target;
-            clearInterval(counter);
-        } else {
-            element.textContent = Math.floor(current);
-        }
-    }, 16);
-}
+    const cards = document.querySelectorAll('.project-card, .service-card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.animation = `slideInUp 0.6s ease ${index * 0.1}s forwards`;
+    });
+});
 
-// স্লাইড আপ অ্যানিমেশন স্টাইল যোগ করুন
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+// ডার্ক মোড টগল (ঐচ্ছিক)
+const darkModeToggle = () => {
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    if (isDarkMode) {
+        document.body.style.backgroundColor = '#1a1a1a';
+        document.body.style.color = '#f0f0f0';
     }
-`;
-document.head.appendChild(style);
+};
+
+// পেজ লোড করার সময় চেক করুন
+darkModeToggle();
